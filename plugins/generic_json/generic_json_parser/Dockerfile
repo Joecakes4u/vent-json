@@ -7,4 +7,4 @@ ADD . /generic_json_parser
 WORKDIR /generic_json_parser
 
 ENTRYPOINT ["python", "generic_json_parser.py"]
-CMD[""]
+CMD [""]
