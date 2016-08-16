@@ -61,13 +61,15 @@ def run_tool(path):
         with open(path, 'r') as f:
             recs = []
             try:
-                recs = json.load(fi)
+                recs = json.load(f)
             except:
                 for line in f:
                     recs.append(json.loads(line))
+                print "success"
             try:
                 for rec in recs:
                     message = str(rec)
+                    print rec
                     if channel:
                         channel.basic_publish(exchange='topic_recs', routing_key=routing_key,body=message)
                         print " [x] Sent %r:%r" % (routing_key, message)
