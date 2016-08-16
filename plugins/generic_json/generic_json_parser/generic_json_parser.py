@@ -61,22 +61,20 @@ def run_tool(path):
         with open(path, 'r') as f:
             recs = []
             try:
-                with open(f_dir+"/"+f, 'r') as fi:
-                    recs = json.load(fi)
+                recs = json.load(fi)
             except:
-                with open(f_dir+"/"+f, 'r') as fi:
-                    for line in fi:
-                        recs.append(json.loads(line))
+                for line in f:
+                    recs.append(json.loads(line))
             try:
                 for rec in recs:
                     message = str(rec)
                     if channel:
                         channel.basic_publish(exchange='topic_recs', routing_key=routing_key,body=message)
                         print " [x] Sent %r:%r" % (routing_key, message)
-            except:
-                pass
-    except:
-        pass
+            except Exception as e:
+                print str(e)
+    except Exception as e:
+        print str(e)
 
     try:
         connection.close()
@@ -86,4 +84,5 @@ def run_tool(path):
 if __name__ == '__main__':
     path = get_path()
     if path:
+        print path
         run_tool(path)
