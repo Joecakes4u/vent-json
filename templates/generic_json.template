@@ -3,4 +3,3 @@ name = Parse generic JSON files to index into a database
 
 [service]
 schedule = {"all":"hourly"}
-mime_types = application/json
