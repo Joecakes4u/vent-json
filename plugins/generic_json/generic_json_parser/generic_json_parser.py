@@ -69,7 +69,6 @@ def run_tool(path):
             try:
                 for rec in recs:
                     message = str(rec)
-                    print rec
                     if channel:
                         channel.basic_publish(exchange='topic_recs', routing_key=routing_key,body=message)
                         print " [x] Sent %r:%r" % (routing_key, message)
