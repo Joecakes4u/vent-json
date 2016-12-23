@@ -1,2 +1,5 @@
+[plugins]
+core = all
+
 [index_name]
 generic_json_parser = json_parser
